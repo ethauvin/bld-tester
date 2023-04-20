@@ -1,11 +1,11 @@
 package net.thauvin.erik;
 
 import rife.bld.Project;
+import rife.bld.dependencies.Repository;
 
 import java.util.List;
 
-import static rife.bld.dependencies.Repository.MAVEN_CENTRAL;
-import static rife.bld.dependencies.Repository.RIFE2_RELEASES;
+import static rife.bld.dependencies.Repository.*;
 import static rife.bld.dependencies.Scope.*;
 
 public class BldTesterBuild extends Project {
@@ -18,12 +18,13 @@ public class BldTesterBuild extends Project {
         javaRelease = 17;
 
         downloadSources = true;
-        repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES);
+        repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES,
+                new Repository("https://oss.sonatype.org/content/repositories/snapshots/"));
 
         scope(compile)
-                .include(dependency("net.thauvin.erik:bitly-shorten:0.9.3"));
+                .include(dependency("net.thauvin.erik:bitly-shorten:0.9.4-SNAPSHOT"));
         scope(runtime)
-                .include(dependency("net.thauvin.erik:bitly-shorten:0.9.3"));
+                .include(dependency("net.thauvin.erik:bitly-shorten:0.9.4-SNAPSHOT"));
         scope(test)
                 .include(dependency("org.junit.jupiter", "junit-jupiter", version(5, 9, 2)))
                 .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1, 9, 2)));

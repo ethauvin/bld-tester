@@ -8,6 +8,6 @@ public class BldTesterMain {
     }
 
     public String getMessage() {
-        return new Bitlinks("blah").create("https://example.com/");
+        return new Bitlinks("blah").shorten("https://www.example.com/");
     }
 }

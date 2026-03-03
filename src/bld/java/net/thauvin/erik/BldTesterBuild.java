@@ -21,13 +21,14 @@ public class BldTesterBuild extends Project {
         repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES,
                 new Repository("https://oss.sonatype.org/content/repositories/snapshots/"));
 
+        var junit = version(6, 0, 3);
         scope(compile)
                 .include(dependency("net.thauvin.erik:bitly-shorten:0.9.4-SNAPSHOT"));
         scope(runtime)
-                .include(dependency("net.thauvin.erik:bitly-shorten:0.9.4-SNAPSHOT"));
+                .include(dependency("net.thauvin.erik:bitly-shorten:2.0.0"));
         scope(test)
-                .include(dependency("org.junit.jupiter", "junit-jupiter", version(5, 9, 2)))
-                .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1, 9, 2)));
+                .include(dependency("org.junit.jupiter", "junit-jupiter", junit))
+                .include(dependency("org.junit.platform", "junit-platform-console-standalone", junit));
     }
 
     public static void main(String[] args) {

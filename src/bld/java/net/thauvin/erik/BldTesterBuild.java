@@ -18,12 +18,13 @@ public class BldTesterBuild extends Project {
         javaRelease = 17;
 
         downloadSources = true;
+
         repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES,
                 new Repository("https://oss.sonatype.org/content/repositories/snapshots/"));
 
         var junit = version(6, 0, 3);
         scope(compile)
-                .include(dependency("net.thauvin.erik:bitly-shorten:0.9.4-SNAPSHOT"));
+                .include(dependency("net.thauvin.erik:bitly-shorten:2.0.0"));
         scope(runtime)
                 .include(dependency("net.thauvin.erik:bitly-shorten:2.0.0"));
         scope(test)

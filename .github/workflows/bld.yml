@@ -32,7 +32,22 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bld-
 
-      - name: Update dependencies
+      - name: Check for bld cache
+        id: check-cache
+        shell: bash
+        run: |
+          if [ -f "lib/bld/bld.cache" ]; then
+            echo "cache_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "cache_exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download dependencies
+        if: steps.check-cache.outputs.cache_exists == 'false'
+        run: ./bld download
+
+      - name: Update dependencies  
+        if: steps.check-cache.outputs.cache_exists == 'true'
         run: ./bld updates
 
       - name: Compile source code

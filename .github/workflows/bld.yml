@@ -32,8 +32,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bld-
 
-      - name: Download dependencies
-        run: ./bld download
+      - name: Update dependencies
+        run: ./bld updates
 
       - name: Compile source code
         run: ./bld compile

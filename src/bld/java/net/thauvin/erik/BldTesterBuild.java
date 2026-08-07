@@ -22,7 +22,7 @@ public class BldTesterBuild extends Project {
         repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES,
                 new Repository("https://oss.sonatype.org/content/repositories/snapshots/"));
 
-        var junit = version(6, 1, 0);
+        var junit = version(6, 1, 3);
         scope(compile)
                 .include(dependency("net.thauvin.erik:bitly-shorten:2.0.0"));
         scope(runtime)
@@ -35,4 +35,5 @@ public class BldTesterBuild extends Project {
     public static void main(String[] args) {
         new BldTesterBuild().start(args);
     }
+
 }
